@@ -30,13 +30,14 @@ uv run --with reportlab python tools/make_report.py
 
 ## What the demo shows
 
-Running `uv run drone-analyst` prints five sections.
+Running `uv run drone-analyst` prints six sections.
 
 1. **Logs**, one line per detected object, for example `Blue Ford F150 spotted at garage, 12:00.`
 2. **Alerts**, for example `Person loitering at main gate, 00:01.`
 3. **Indexed frames**, queryable by object and by time range.
 4. **Agent answers**, including a follow-up question about the vehicle.
 5. **Summary**, a single sentence describing the recording.
+6. **Scalability**, a 1000 frame load with indexing time and a query row count.
 
 ## Project layout
 

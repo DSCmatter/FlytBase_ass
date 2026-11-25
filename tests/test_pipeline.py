@@ -1,6 +1,6 @@
 import pytest
 
-from drone_analyst.feed import build_sample_frames
+from drone_analyst.feed import build_load_frames, build_sample_frames
 from drone_analyst.pipeline import SecurityAnalystPipeline
 
 
@@ -99,3 +99,10 @@ def test_agent_summary_is_one_sentence(result):
     assert summary.endswith(".")
     assert "\n" not in summary
     assert "alert" in summary.lower()
+
+
+def test_load_frames_have_unique_ids_and_timestamps():
+    frames = build_load_frames(120)
+
+    assert len({frame.id for frame in frames}) == 120
+    assert len({frame.timestamp for frame in frames}) == 120

@@ -79,7 +79,7 @@ The demo produces the following kinds of output.
 - **Agent answer.** A question about the vehicle returns both times, demonstrating that context is used across the recording.
 - **Summary.** One sentence covering the vehicles and the person seen during the day.
 
-These outputs come from the same stored events, so the log, the alert, and the query result cannot disagree. Nine automated cases verify the behaviors. The observed run processed 6 frames, logged 5 events, and raised 2 alerts. Full cases and results are in `docs/TESTING.md`.
+These outputs come from the same stored events, so the log, the alert, and the query result cannot disagree. Ten automated cases verify the behaviors. The observed run processed 6 frames, logged 5 events, and raised 2 alerts. A load run indexed 1000 frames and 1000 events in 0.02s and returned 500 rows from a vehicle query. Full cases and results are in `docs/TESTING.md`.
 
 ### 8. How AI tools assisted
 

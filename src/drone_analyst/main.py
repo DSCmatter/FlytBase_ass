@@ -1,4 +1,6 @@
-from .feed import build_sample_frames
+from time import perf_counter
+
+from .feed import build_load_frames, build_sample_frames
 from .models import clock
 from .pipeline import SecurityAnalystPipeline
 
@@ -47,6 +49,21 @@ def main() -> None:
 
         print("\nSummary")
         print(f"  {result.agent.summarize()}")
+
+        print("\nScalability")
+        load_pipeline = SecurityAnalystPipeline()
+        try:
+            started = perf_counter()
+            load_result = load_pipeline.run(build_load_frames())
+            elapsed = perf_counter() - started
+            vehicle_rows = load_pipeline.query_by_object(kind="vehicle")
+            print(
+                f"  Indexed {len(load_result.frames)} frames and {len(load_result.events)} "
+                f"events in {elapsed:.2f}s."
+            )
+            print(f"  Vehicle query returned {len(vehicle_rows)} rows.")
+        finally:
+            load_pipeline.close()
     finally:
         pipeline.close()
 

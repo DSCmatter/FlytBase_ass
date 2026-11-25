@@ -35,3 +35,25 @@ def build_sample_frames() -> list[Frame]:
         _frame(5, "12:00", "garage", "Frame 5: Blue Ford F150 at garage", (18.0, 22.0), 50.0),
         _frame(6, "18:30", "driveway", "Frame 6: Person walking on driveway", (25.0, 8.0), 33.0),
     ]
+
+
+def build_load_frames(count: int = 1000) -> list[Frame]:
+    frames = []
+    for index in range(count):
+        hour, minute = divmod(index % (24 * 60), 60)
+        description = (
+            f"Frame {index + 1}: Blue Ford F150 at main gate"
+            if index % 2 == 0
+            else f"Frame {index + 1}: Person at main gate"
+        )
+        frames.append(
+            _frame(
+                index + 1,
+                f"{hour:02d}:{minute:02d}",
+                "main gate",
+                description,
+                (12.0, 4.0),
+                42.0,
+            )
+        )
+    return frames

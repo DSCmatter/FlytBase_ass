@@ -24,6 +24,7 @@ uv run pytest -q
 | 7 | Agent vehicle question | Question `When was the blue Ford F150 seen?` | Answer includes `00:05` and `12:00` |
 | 8 | Agent truck question | Question `Show all truck events` | Answer includes both F150 events and no van or person events |
 | 9 | Summary | `summarize()` after running the feed | A single non-empty sentence naming the detections and alerts |
+| 10 | Load feed shape | `build_load_frames(120)` | 120 unique frame ids and 120 unique timestamps |
 
 ## Dynamic input scenarios
 
@@ -47,4 +48,4 @@ Both alerts are returned in the pipeline result and printed by the demo. They ar
 
 ## Validation result
 
-All nine cases pass with `uv run pytest -q`. The demo command `uv run drone-analyst` completes and prints logs, alerts, indexed query results, agent answers, and a summary. The observed run produced 6 frames, 5 events, and 2 alerts. Exact command output is captured in the demo screen recording referenced by the report.
+All ten cases pass with `uv run pytest -q`. The demo command `uv run drone-analyst` completes and prints logs, alerts, indexed query results, agent answers, a summary, and a scalability section. The observed sample run produced 6 frames, 5 events, and 2 alerts. The load section indexed 1000 frames and 1000 events in 0.02s and returned 500 rows from the vehicle query. Exact command output is captured in the demo screen recording referenced by the report.
