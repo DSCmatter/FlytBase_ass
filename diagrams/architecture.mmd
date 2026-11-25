@@ -1,0 +1,8 @@
+flowchart LR
+    F[Simulated feed<br/>frames + telemetry] --> A[Analyzer<br/>text to entities]
+    A --> I[(SQLite index<br/>frames + events)]
+    I --> R[Alert engine<br/>rule registry]
+    R --> G[Analyst agent<br/>context + Q and A]
+    G --> O[Logs, alerts,<br/>queries, summary]
+
+    I -.->|query by time or object| G
